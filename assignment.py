@@ -1,34 +1,38 @@
 def read_file(file_path: str) -> str:
-    """
-    Reads the contents of a file and returns it as a string.
-    """
+    f = open(file_path, "r")
+    res = ""
+    for i in f:
+        res += str(i)
+    f.close()
+    return res
     raise NotImplementedError()
 
 
 def write_file(file_path: str, content: str) -> None:
-    """
-    Writes the given content to a file.
-    """
+    f = open(file_path, "a")
+    f.write(str(content))
+    f.close()
+    return None
     raise NotImplementedError()
 
-
 def list_files_in_directory(directory_path: str) -> list:
-    """
-    Returns a list of files in the specified directory.
-    """
+    import os
+    res = os.listdir(directory_path)
+    return res
     raise NotImplementedError()
 
 
 def generate_numbers(n: int) -> iter:
-    """
-    Generates a sequence of numbers from 0 to n-1 using an iterator.
-    """
+    temp = []
+    for i in range(0, n):
+        temp.append(i)
+    return iter(temp)
     raise NotImplementedError()
 
 
 def use_function_from_module(module_name: str, function_name: str, *args) -> any:
-    """
-    Demonstrates how to import a function from another script (module) and execute it.
-    The module name and function name are passed as strings, along with any arguments for the function.
-    """
+    import importlib
+    module = importlib.import_module(module_name)
+    func = getattr(module, function_name)
+    return func(*args)
     raise NotImplementedError()
